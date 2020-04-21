@@ -7,6 +7,7 @@ import HeaderComponent from './HeaderComponent'
 import FooterComponent from './FooterComponent'
 import WelcomeComponent from './WelcomeComponent'
 import LogoutComponent from './LogoutComponent'
+import UpdatetodoComponent from './updatetodoComponent'
 
 
 
@@ -17,6 +18,7 @@ class Todo extends Component{
         <Router>
             <HeaderComponent/>
             <Switch>
+        <AuthenticatedRoute  path="/todos/:id" component={UpdatetodoComponent} />
         <Route path="/" exact component={LoginComponent} />
         <Route path="/login"  component={LoginComponent} />
         <AuthenticatedRoute path="/todos"  component={TodoComponent} />

@@ -3,11 +3,11 @@ class helloWorldService {
 
     executeHelloWorldService(){
     
-        return  axios.get('http://localhost:8080/document/helloworld')
+        return  axios.get('http://localhost:8080/helloworld')
     }
 
     excuteHelloWorldVariable(name){
-        return axios.get(`http://localhost:8080/document/helloworld/${name}`)
+        return axios.get(`http://localhost:8080/helloworld/${name}`)
     }
 
    
