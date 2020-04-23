@@ -1,7 +1,9 @@
 import React,{Component} from 'react' 
 import todoService from '../api/todo/todoSerivce'
 import authenticationService from './authenticationService.js'
-import updatetodoComponent from './updatetodoComponent'
+import moment from 'moment'
+
+
 
 
 class TodoComponent extends Component{
@@ -15,6 +17,7 @@ class TodoComponent extends Component{
         this.removetodo=this.removetodo.bind(this)
         this.refreshtodo=this.refreshtodo.bind(this)
         this.updatetodo=this.updatetodo.bind(this)
+        this.addtodoClicked=this.addtodoClicked.bind(this)
 
     }
      componentDidMount(){
@@ -49,6 +52,11 @@ class TodoComponent extends Component{
          )
      }
 
+     addtodoClicked(){
+         console.log('Added')
+         this.props.history.push(`/todos/-1`)
+     }
+
     render(){
     return ( 
         <>
@@ -73,7 +81,7 @@ class TodoComponent extends Component{
                   
                       <td>{ todo.description}</td>
                       <td>{todo.done.toString()}</td>
-                      <td>{todo.targetDate.toString()}</td>
+                      <td>{moment(todo.targetDate).format('YYYY-MM-DD')}</td>
                       <td><button className="btn" onClick={()=>this.updatetodo(todo.id)}>Update</button></td>
                       <td><button className="btn btn-danger"  onClick={() =>this.removetodo(todo.id)}>Delete</button></td>
 
@@ -83,6 +91,10 @@ class TodoComponent extends Component{
               </tbody>
 
           </table>
+          <div className="row">
+              <button className="btn btn-success" onClick={this.addtodoClicked}>Add</button>
+
+          </div>
           </div>
           </>
     )   
